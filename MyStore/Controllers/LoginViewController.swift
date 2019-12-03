@@ -11,6 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    var ref: DatabaseReference!
+    
     @IBOutlet weak var warnLabel: UILabel!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passText: UITextField!
@@ -24,6 +26,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "listSegue", sender: nil)
             }
         })
+        ref = Database.database().reference(withPath: "users")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,8 +67,6 @@ class LoginViewController: UIViewController {
                }
         Auth.auth().createUser(withEmail: email, password: pass, completion: nil)
     }
-    
-
 
 }
 
