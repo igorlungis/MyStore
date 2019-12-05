@@ -54,12 +54,9 @@ class NewProductViewController: UIViewController, UIImagePickerControllerDelegat
                      }
                  })
              })
-        }
-        
+        }        
         dismiss(animated: true, completion: nil)
     }
-    
-    
     
     @IBAction func photoBut(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -69,7 +66,6 @@ class NewProductViewController: UIViewController, UIImagePickerControllerDelegat
             imagePicker.sourceType = .photoLibrary
             present(imagePicker, animated: true)
         }
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -77,5 +73,11 @@ class NewProductViewController: UIViewController, UIImagePickerControllerDelegat
         imgView.contentMode = .scaleToFill
         imgView.clipsToBounds = true
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tap(_ sender: Any) {
+        titleText.resignFirstResponder()
+        descText.resignFirstResponder()
+        priceText.resignFirstResponder()
     }
 }

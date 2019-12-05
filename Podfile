@@ -9,5 +9,8 @@ target 'MyStore' do
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
+pod 'Alamofire'
+pod 'AlamofireImage'
+
 
 end

@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passText: UITextField!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         warnLabel.alpha = 0
@@ -57,9 +56,13 @@ class LoginViewController: UIViewController {
             }
             self?.displayWarningLabel(withText: "No such user")
         })
+        if emailText.text != "admin@admin.ru" {
+            AppDelegate.admin = false
+        } else {
+            AppDelegate.admin = true
+        }
     }
-    
-    
+        
     @IBAction func registerButton(_ sender: Any) {
         guard let email = emailText.text, let pass = passText.text, email != "", pass != "" else {
                    displayWarningLabel(withText: "Incorrect info")
@@ -67,6 +70,10 @@ class LoginViewController: UIViewController {
                }
         Auth.auth().createUser(withEmail: email, password: pass, completion: nil)
     }
-
+    
+    @IBAction func tap(_ sender: Any) {
+        emailText.resignFirstResponder()
+        passText.resignFirstResponder()
+    }    
 }
 
